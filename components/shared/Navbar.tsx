@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -10,8 +12,11 @@ import {
 import { Switch } from "../ui/switch";
 import { Button } from "../ui/button";
 import { AiOutlineMenu } from "react-icons/ai";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+const pathname = usePathname()
+
   return (
     <header className="shadow-xl py-4">
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
@@ -24,7 +29,7 @@ const Navbar = () => {
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/news" className="text-xl">News</NavigationMenuLink>
+                <NavigationMenuLink href="/news" className={`text-xl  ${pathname === '/news' ? 'text-red-500 font-semibold' : ''}`}>News</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="text-xl">Services</NavigationMenuTrigger>
@@ -47,10 +52,10 @@ const Navbar = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/about" className="text-xl">About</NavigationMenuLink>
+                <NavigationMenuLink href="/about"  className={`text-xl  ${pathname === '/about' ? 'text-red-500 font-semibold' : ''}`}>About</NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/contact" className="text-xl">Contact</NavigationMenuLink>
+                <NavigationMenuLink href="/contact"  className={`text-xl  ${pathname === '/contact' ? 'text-red-500 font-semibold' : ''}`}>Contact</NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
